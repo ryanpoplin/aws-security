@@ -1,0 +1,58 @@
+Basics:
+    - Minimise the blast radius
+    - VPC's should only have what they need in there, etc...
+    - Accounts can be seperated for things such as backups...
+    - Have layers of security (in the case where some layer gets compromised; there should be other layers preventing hell from breaking loose)
+    - Complex is not secure, so make it easy to understand why something is secure
+    - Monitor, Log and Review (monitor all regions even ones you are not using. Monitor, Log and Review them, too)
+    - Security is an enabler
+    - Understand the control plane and cloud options that could compromise the systems
+    - Understand the AWS tools for security, put it together and have it automated
+    - Remember, Remember the tale of Code Spaces and AWS...
+
+
+IAM:
+What's IAM?
+
+Identity and Access Mgmt: Who are people and what can they do with AWS services associated with our account
+    - Root User: ADMIN (Only one person should have the ability to be this ROOT user and this info should be password locked somewhere)
+    - Rule of Least Priv.
+    - Provide access to AWS resources
+    - Can't be used to gain access to EC2/ECS instances 
+    - Native AWS resources/services: S3, SNS and DynamoDB
+    - Doesn't cost anything to use in AWS and it's global to all regions within the account
+    - Users, Groups and Permissions + Roles
+        - Users: Keys, Usernames Passwords, Both, Nothing
+        - Users are in Groups and those groups can have permissions that apply to all users added to said Group
+        - Users can be in multiple Groups
+        - Permissions can be attached to Users and Groups and other stuff in the AWS env.
+        - Roles: Roles are attached to Policies and Users can be given Roles and some services such as EC2 instances may be assigned a Role (Lambda too)
+        - Temp. Creds.: Roles are assumed via Services and Users and have a time limit on how long they have to get shit done
+        - Root Account: Should not be used directly after being created via the AWS account
+        - Make sure good User passwords are set to use best practices
+        - Root Keys are removed via default
+        - We should have MFA enabled for our accounts...
+        - Users have ARNs
+        - Users should always be in a Group
+        - Groups should be in charge of giving Users in them Roles attached to Policies
+        - The dashboard on AWS will only show the items you're allowed to view based on your access control, etc...
+        - You can roll keys
+        - Policies are versioned
+        - Policies associated with Roles need to be attached to Users, Groups and Services, etc...
+        - IAM Policy Simulator is bad ass...
+        - Know where the AWS CLI and AWS Dashboard is more efficent...
+        - ARNs are resource ID's and Paths are x/y/z paths of IAM configs...
+        - Credential Reports
+        - Roles allow one Policy to be shared between Users, Groups and Services, ditto
+        - Trust Policy: shows what Users or Services assume a role associated with Policies using ARN ref. resources...
+        - Confused Deputies unique ID's are required manuel
+        - You can enabled role switching which is cool
+        - Lock away the root account...
+        - IAM Users no shares...
+        - Groups and Managed Policies
+        - Always give users least privs.
+        - Rotate Pass and Keys
+        - Federation is key for some scenarios...
+        - Never use creds, use roles
+        - Remove stale assets....
+        - Log and Monitor...
